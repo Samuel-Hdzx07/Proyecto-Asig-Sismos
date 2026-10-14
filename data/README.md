@@ -8,3 +8,7 @@ Los archivos JSON se generaron a partir de los scripts SQL del repositorio de re
 La página carga estos JSON locales en cada visita; no usa PHP, PostgreSQL ni datos de demostración. El mapa base, las bibliotecas de gráficos y los límites estatales usan servicios externos, igual que la referencia.
 
 El repositorio de referencia solicita citar el artículo asociado: [Cuando México tiembla: la historia contada por los datos](https://doi.org/10.24275/AZC2026E1004).
+
+## Límites de correspondencia
+
+No se relacionan dim_zonas y dim_economia usando sus IDs: el orden de las claves no coincide (por ejemplo, zona 4 es Coahuila y economía 4 es Chiapas). En dim_economia, entidad contiene agregados numéricos, no códigos estatales; por eso los valores económicos del mapa estático se asignan por nombre_entidad. Esto evita perder estados al intentar interpretarlos como códigos, pero no reproduce el mapeo defectuoso de std3.php. La tabla de zonas solo contiene 32 entidades; no hay filas municipales para mostrar.
