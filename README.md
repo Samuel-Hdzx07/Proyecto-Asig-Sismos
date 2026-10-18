@@ -107,7 +107,7 @@ https://github.com/Samuel-Hdzx07/Seismic-Data-Visualization-System — commit 85
 
 ### Declaración de IA
 
-El material heredado declara apoyo de Gemini para diagnóstico de Docker y sintaxis SQL, y de Claude para consistencia documental. Codex apoyó la preparación documental, nueve borradores de propuestas, la presentación, la separación entre repositorios y el registro de las comprobaciones actuales. La revisión de un compañero permanece pendiente.
+Codex (OpenAI): apoyo en la elaboración del proyecto.
 
 ### Referencias
 

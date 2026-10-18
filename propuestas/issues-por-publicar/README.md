@@ -1,6 +1,6 @@
 # Nueve issues listos para revisión y publicación
 
-Son borradores asistidos por IA. Cada compañero debe validar o corregir sus tres propuestas antes de publicarlas con su cuenta. No se ha publicado ni enviado nada en su nombre.
+Son borradores para revisión. Codex (OpenAI): apoyo en la elaboración del proyecto. Cada compañero debe validar o corregir sus tres propuestas antes de publicarlas con su cuenta. No se ha publicado ni enviado nada en su nombre.
 
 | Borrador | Revisor sugerido | Usuario |
 |---|---|---|
@@ -20,6 +20,6 @@ Son borradores asistidos por IA. Cada compañero debe validar o corregir sus tre
 2. Abrir Issues → New issue en el repositorio del equipo.
 3. Copiar el título y los apartados revisados, adjuntar el diagrama de la propuesta y asignarse el issue.
 4. Registrar el enlace real en el README y en el documento de revisión.
-5. Conservar la declaración de asistencia de IA que corresponda.
+5. Mantener la mención de apoyo de Codex.
 
 La revisión del pull request debe realizarla un compañero real; no se sustituye con esta lista.

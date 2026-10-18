@@ -11,11 +11,11 @@ Actualización documental: 18 de octubre de 2026. Grupo 3CV4.
 | Esparza Ramón Fernando Adán | Borradores P07–P09: procedencia, correcciones y calidad | Validar, corregir y aceptar las propuestas; cuenta confirmada: @adamighti2 |
 | Ramos Padrón Jesus Emmanuel | Borradores P10–P12: escenarios, estaciones y criterios de seguimiento | Validar, corregir y aceptar las propuestas; cuenta confirmada: @Chuchin2107 |
 
-Esta tabla organiza el trabajo. No certifica contribuciones que todavía no cuentan con evidencia. Los nueve borradores recibieron asistencia de IA y están sujetos a revisión por los compañeros.
+Esta tabla organiza el trabajo. No certifica contribuciones que todavía no cuentan con evidencia. Los nueve borradores están sujetos a revisión por los compañeros. Codex (OpenAI): apoyo en la elaboración del proyecto.
 
 ## Lista de revisión por un compañero
 
-Cuando una persona del equipo realice la revisión, debe completar su nombre, fecha, observaciones y enlace a la evidencia real. La revisión de Codex no sustituye la revisión del compañero que pide la práctica.
+Cuando una persona del equipo realice la revisión, debe completar su nombre, fecha, observaciones y enlace a la evidencia real. La revisión debe realizarla un compañero del equipo.
 
 - [ ] Revisar la correspondencia de Sismos con las cinco tablas publicadas.
 - [ ] Confirmar que las doce propuestas son distintas y que cada integrante comprende las suyas.
