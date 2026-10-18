@@ -31,8 +31,8 @@ Cuando una persona del equipo realice la revisión, debe completar su nombre, fe
 
 **Resultado:** pendiente de revisión por un compañero.
 
-No se crearon commits, no se alteraron autores y no se publicó una revisión en nombre de otra persona durante esta actualización.
+Las mejoras documentales están registradas en Git. No se publicó una revisión en nombre de otra persona.
 
 Los [nueve borradores de issues](propuestas/issues-por-publicar/README.md) están preparados por usuario. La aceptación de las invitaciones y la revisión del compañero siguen sin comprobarse en esta actualización.
 
-Las cuentas y los nombres se conservan del material recibido; falta confirmar la composición definitiva del equipo independiente. Los issues #2–#4 citados pertenecen al repositorio anterior, no a este.
+Los issues #2–#4 citados pertenecen al repositorio anterior, no a este.

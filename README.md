@@ -2,14 +2,14 @@
 
 Repositorio independiente para la entrega asignada sobre datos sísmicos de México. Contiene el material del proyecto asignado y una versión estática del dashboard. No contiene el proyecto propio tipo Spotify ni los materiales de Natfy. Incluye la documentación académica correspondiente al proyecto asignado.
 
-## Integrantes indicados para la portada
+## Integrantes
 
 - Hernandez Barrios Samuel Rodrigo
 - Ramos Padrón Jesus Emmanuel
 - Damas Garnica Adrian
 - Esparza Ramón Fernando Adán
 
-La portada de `correspondencia-con-el-esquema.pdf` se actualizó para mostrar estos cuatro nombres. La segunda página y el resto del contenido del PDF se conservaron. No se atribuye implementación individual a integrantes.
+Grupo: 3CV4. Carrera: Ingeniería en Sistemas Computacionales.
 
 ## Contenido
 
@@ -66,9 +66,9 @@ La versión estática conserva la estructura de navegación y las vistas princip
 El repositorio se creó para separar el proyecto asignado de otros materiales. El repositorio original `Samuel-Hdzx07/Proyecto_BD` no se modificó. Issues, pull requests y configuración del repositorio original no se transfieren a esta copia.
 
 
-## Documentación académica incorporada — 18/10/2026
+## Documentación académica
 
-Material recuperado de la copia local de BD-Proyecto-Musica. Se conserva el dashboard estático existente y se añaden los entregables del proyecto asignado.
+Documentación del modelado, análisis y propuestas del proyecto asignado.
 
 ### Práctica 2
 
@@ -99,7 +99,7 @@ El cambio SQL está preparado, pero falta acreditar su ejecución sobre una copi
 
 La base original respondió con 319592 filas de dim_sismos. Para 2020, la aplicación mostró 21 eventos con magnitud mínima 5 y 3 con magnitud mínima 6. Estas pruebas corresponden al sistema original local con PostgreSQL, no a la página estática. El motor ya estaba activo al retomar el trabajo; no se atribuye una reparación que no se realizó.
 
-Pendientes: captura auténtica del arranque en terminal, validación de integrantes y propuestas, issues del nuevo repositorio, revisión de un compañero y ejecución acreditada de los cambios de Práctica 3. Los nombres se conservan del material recibido mientras se confirma el nuevo equipo.
+Pendientes: captura auténtica del arranque en terminal, validación de propuestas, issues del nuevo repositorio, revisión de un compañero y ejecución acreditada de los cambios de Práctica 3. 
 
 ### Fork de referencia
 
@@ -113,3 +113,8 @@ El material heredado declara apoyo de Gemini para diagnóstico de Docker y sinta
 
 - Villa Vargas, J. M., Hurtado Avilés, G., y Climent Hernández, J. A. (2026). Cuando México tiembla: la historia contada por los datos. AZCATL Revista de Divulgación de la Ciencia, la Ingeniería y la Innovación, 4(6), 28–33. https://doi.org/10.24275/AZC2026E1004
 - Las referencias de los tres artículos se incluyen completas en articulos/resumenes.pdf.
+
+
+## Cobertura de las prácticas
+
+Consulta [pendientes-practicas.md](pendientes-practicas.md) para distinguir documentos disponibles y evidencia pendiente.
