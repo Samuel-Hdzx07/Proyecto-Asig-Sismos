@@ -1,6 +1,6 @@
 # Proyecto asignado: visualización del impacto de sismos
 
-Repositorio independiente para la entrega asignada sobre datos sísmicos de México. Contiene el material del proyecto asignado y una versión estática del dashboard. No contiene el proyecto propio tipo Spotify ni los PDF de prácticas o materiales de referencia que no pertenecen a esta entrega.
+Repositorio independiente para la entrega asignada sobre datos sísmicos de México. Contiene el material del proyecto asignado y una versión estática del dashboard. No contiene el proyecto propio tipo Spotify ni los materiales de Natfy. Incluye la documentación académica correspondiente al proyecto asignado.
 
 ## Integrantes indicados para la portada
 
@@ -64,3 +64,52 @@ La versión estática conserva la estructura de navegación y las vistas princip
 ## Alcance de la copia
 
 El repositorio se creó para separar el proyecto asignado de otros materiales. El repositorio original `Samuel-Hdzx07/Proyecto_BD` no se modificó. Issues, pull requests y configuración del repositorio original no se transfieren a esta copia.
+
+
+## Documentación académica incorporada — 18/10/2026
+
+Material recuperado de la copia local de BD-Proyecto-Musica. Se conserva el dashboard estático existente y se añaden los entregables del proyecto asignado.
+
+### Práctica 2
+
+- [Levantamiento original y revisión actual](levantamiento.md).
+- [EER conceptual](eer.png) y [correspondencia con el esquema](correspondencia-con-el-esquema.pdf).
+- [Resúmenes de los tres artículos](articulos/resumenes.pdf).
+- [Propuestas documentadas](propuestas/propuestas-de-mejora.pdf), [datos de propuestas](propuestas/propuestas-equipo.json) y [nueve borradores de issues](propuestas/issues-por-publicar/README.md).
+- [Presentación de Sismos en PDF](exposicion/presentacion.pdf), [PowerPoint editable](exposicion/presentacion.pptx) y [guion](exposicion/guion.md).
+- [Estado de participación y revisión](revision-equipo.md).
+
+Las propuestas P01–P03 tienen antecedentes en los issues [#2](https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/2), [#3](https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/3) y [#4](https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/4) del repositorio anterior. Sus números no corresponden a issues de este repositorio. P04–P12 siguen siendo borradores para validación; no se acredita autoría por incluir un nombre.
+
+### Práctica 3
+
+- [Análisis del esquema](analisis-del-esquema.pdf).
+- [Comparación EER–relacional del bloque asignado](comparacion-eer-relacional.pdf).
+- [Cambio de réplicas sísmicas en SQL](cambios/cambio-Samuel-Hdzx07.sql) y [explicación del cambio](cambios/cambio-Samuel-Hdzx07.pdf).
+
+El cambio SQL está preparado, pero falta acreditar su ejecución sobre una copia de la base y conservar el resultado de la consulta. No se presenta como ejecutado. La comparación de ambos proyectos que pide la consigna se completa consultando el material de Natfy en su repositorio.
+
+### Evidencias reales del 18/10/2026
+
+- [Filtro de año 2020 y magnitud mínima 6](capturas/demo-filtro-2026-10-18.png).
+- [Mapa e indicadores con datos](capturas/demo-resultados-2026-10-18.png).
+- [Gráficas](capturas/demo-graficas-2026-10-18.png).
+- [Comandos y consulta SQL](capturas/ejecucion-2026-10-18.txt).
+- [Diagnóstico previo de Docker](capturas/diagnostico-2026-10-16.txt).
+
+La base original respondió con 319592 filas de dim_sismos. Para 2020, la aplicación mostró 21 eventos con magnitud mínima 5 y 3 con magnitud mínima 6. Estas pruebas corresponden al sistema original local con PostgreSQL, no a la página estática. El motor ya estaba activo al retomar el trabajo; no se atribuye una reparación que no se realizó.
+
+Pendientes: captura auténtica del arranque en terminal, validación de integrantes y propuestas, issues del nuevo repositorio, revisión de un compañero y ejecución acreditada de los cambios de Práctica 3. Los nombres se conservan del material recibido mientras se confirma el nuevo equipo.
+
+### Fork de referencia
+
+https://github.com/Samuel-Hdzx07/Seismic-Data-Visualization-System — commit 8569667cf4f46fab640dba3f82a7b324ca7efaf7. El clon ejecutable se mantiene separado de este repositorio de entrega.
+
+### Declaración de IA
+
+El material heredado declara apoyo de Gemini para diagnóstico de Docker y sintaxis SQL, y de Claude para consistencia documental. Codex apoyó la preparación documental, nueve borradores de propuestas, la presentación, la separación entre repositorios y el registro de las comprobaciones actuales. La revisión de un compañero permanece pendiente.
+
+### Referencias
+
+- Villa Vargas, J. M., Hurtado Avilés, G., y Climent Hernández, J. A. (2026). Cuando México tiembla: la historia contada por los datos. AZCATL Revista de Divulgación de la Ciencia, la Ingeniería y la Innovación, 4(6), 28–33. https://doi.org/10.24275/AZC2026E1004
+- Las referencias de los tres artículos se incluyen completas en articulos/resumenes.pdf.

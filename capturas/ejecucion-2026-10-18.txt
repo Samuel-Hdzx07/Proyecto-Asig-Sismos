@@ -1,0 +1,31 @@
+Ejecución real de Sismos — 18 de octubre de 2026 (México).
+Registro de comandos y salidas. Este TXT no sustituye una captura de pantalla de terminal.
+No se recrearon contenedores ni se borraron volúmenes.
+
+> docker compose ps
+NAME                                      IMAGE                                   COMMAND                  SERVICE   CREATED       STATUS          PORTS
+seismic-data-visualization-system-db-1    postgres:17                             "docker-entrypoint.s…"   db        3 weeks ago   Up 11 minutes   0.0.0.0:5433->5432/tcp, [::]:5433->5432/tcp
+seismic-data-visualization-system-web-1   seismic-data-visualization-system-web   "docker-php-entrypoi…"   web       8 days ago    Up 11 minutes   0.0.0.0:80->80/tcp, [::]:80->80/tcp
+
+time="2026-10-18T10:20:40-06:00" level=warning msg="C:\\Users\\sami-dev\\Seismic-Data-Visualization-System\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+
+Código de salida: 0
+
+> docker exec seismic-data-visualization-system-db-1 psql -U postgres -d datawarehouse -c SELECT COUNT(*) AS sismos_cargados FROM dim_sismos; -c SELECT * FROM dim_sismos LIMIT 5;
+ sismos_cargados 
+-----------------
+          319592
+(1 row)
+
+ id_sismo | magnitud | latitud | longitud | profundidad |         referencia_de_localizacion          | estado |    nombre_estado    
+----------+----------+---------+----------+-------------+---------------------------------------------+--------+---------------------
+        0 |      7.4 |      20 |     -105 |          33 | 71 km al NOROESTE de AUTLAN DE NAVARRO, JAL | JAL    | Jalisco
+        1 |      6.9 |      20 |     -105 |          33 | 71 km al NOROESTE de AUTLAN DE NAVARRO, JAL | JAL    | Jalisco
+        2 |      6.9 |      25 |     -110 |          33 | 100 km al NORESTE de LA PAZ, BCS            | BCS    | Baja California Sur
+        3 |        7 |      26 |     -110 |          33 | 83 km al OESTE de AHOME, SIN                | SIN    | Sinaloa
+        4 |        7 |   17.62 |   -99.72 |          33 | 21 km al OESTE de ZUMPANGO DEL RIO, GRO     | GRO    | Guerrero
+(5 rows)
+
+
+
+Código de salida: 0

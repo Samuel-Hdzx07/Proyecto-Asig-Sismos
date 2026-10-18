@@ -1,0 +1,24 @@
+Diagnóstico real del 16 de octubre de 2026 (hora local de México).
+
+Docker CLI localizado en:
+C:\Users\sami-dev\AppData\Local\Programs\DockerDesktop\resources\bin\docker.exe
+
+COMANDO: docker version
+Cliente: 29.7.2, contexto desktop-linux.
+Salida de error del acceso al servidor:
+failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
+
+COMANDO: docker ps -a --format '{{.Names}} {{.Status}} {{.Ports}}'
+Resultado: código de salida 1. Mismo error de conexión al motor.
+
+Se intentó docker desktop start y después se inició Docker Desktop mediante su ejecutable. No se obtuvo un motor disponible.
+
+EXTRACTO DEL LOG REAL com.docker.backend.exe.log:
+[2026-10-17T00:11:40.805556400Z][com.docker.backend.exe] backend cancelling with error: starting services: initializing Ingest server: listening on unix://C:/Users/sami-dev/AppData/Local/Docker/run/sailor-ingest.sock: rename C:/Users/sami-dev/AppData/Local/Docker/run/sailor-ingest.sock C:/Users/sami-dev/AppData/Local/Docker/run/sailor-ingest.sock.stale: The file cannot be accessed by the system. (listener: The file cannot be accessed by the system.)
+
+El instante del log está en UTC y corresponde al 16 de octubre en México.
+Interpretación: el arranque del backend se cancela al intentar acceder/renombrar un socket interno. No hay evidencia para atribuir este fallo a un puerto ocupado de Sismos.
+
+No se eliminaron sockets, discos, contenedores ni volúmenes. No se reinició Windows ni WSL.
+Este archivo es una transcripción del diagnóstico, NO una captura de pantalla de terminal.
+No acredita arranque exitoso ni demo actual con datos cargados.

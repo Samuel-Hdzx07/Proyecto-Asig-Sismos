@@ -1,0 +1,269 @@
+[
+  {
+    "id": "P01",
+    "responsable": "Hernandez Barrios Samuel Rodrigo",
+    "estado": "Registrada",
+    "issue": 2,
+    "titulo": "Réplicas y secuencias sísmicas",
+    "necesidad": "El modelo actual representa los sismos como eventos aislados y no conserva qué evento se considera réplica de otro.",
+    "funcion": "Un analista selecciona un sismo principal y consulta sus réplicas, distancias e intervalos. La ventana temporal y el radio de búsqueda son configurables.",
+    "modelo": "Relación recursiva ES_REPLICA_DE sobre SISMO: principal (0,N), réplica (0,1). intervalo_horas y distancia_km son derivados. El criterio de asignación debe documentarse como una regla operativa, no como una clasificación sismológica definitiva.",
+    "sustento": "Propuesta existente en el issue #2 y en el documento original. Atiende la necesidad identificada al contrastar los usos del artículo con el modelo.",
+    "dificultad": "Media: comparar eventos por tiempo, distancia y magnitud, resolver candidatos y validar el resultado.",
+    "nodos": [
+      "SISMO: principal",
+      "SISMO: réplica"
+    ],
+    "relacion": "ES_REPLICA_DE",
+    "card": [
+      "(0,N)",
+      "(0,1)"
+    ],
+    "usuario_github": "Samuel-Hdzx07",
+    "issue_url": "https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/2"
+  },
+  {
+    "id": "P02",
+    "responsable": "Hernandez Barrios Samuel Rodrigo",
+    "estado": "Registrada",
+    "issue": 3,
+    "titulo": "Placas tectónicas como contexto",
+    "necesidad": "El catálogo no conserva la placa asociada al epicentro ni el contexto de sus límites.",
+    "funcion": "Un usuario consulta eventos por placa y compara magnitudes y profundidades por región tectónica.",
+    "modelo": "PLACA_TECTONICA con identificador, nombre y geometría; SISMO (0,1) - OCURRE_EN - PLACA_TECTONICA (0,N). INTERACTUA_CON relaciona placas y guarda tipo_limite.",
+    "sustento": "Propuesta existente en el issue #3. La figura de placas del artículo y la necesidad de incorporar fuentes adicionales motivan la ampliación.",
+    "dificultad": "Media: obtener una fuente geográfica adecuada, documentar su precisión y resolver puntos cercanos a fronteras.",
+    "nodos": [
+      "SISMO",
+      "PLACA_TECTONICA"
+    ],
+    "relacion": "OCURRE_EN",
+    "card": [
+      "(0,1)",
+      "(0,N)"
+    ],
+    "usuario_github": "Samuel-Hdzx07",
+    "issue_url": "https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/3"
+  },
+  {
+    "id": "P03",
+    "responsable": "Hernandez Barrios Samuel Rodrigo",
+    "estado": "Registrada",
+    "issue": 4,
+    "titulo": "Municipios y localidades expuestas",
+    "necesidad": "La información territorial disponible se agrega por entidad federativa y no permite distinguir localidades cercanas a un epicentro.",
+    "funcion": "Protección civil consulta localidades dentro de un radio, con población y distancia, agrupadas por municipio.",
+    "modelo": "MUNICIPIO depende de ENTIDAD_FEDERATIVA y LOCALIDAD de MUNICIPIO. EXPUESTA_A relaciona SISMO y LOCALIDAD en M:N; distancia_epicentro_km es derivada.",
+    "sustento": "Issue #4 y hallazgo comprobable en el DDL: dim_zonas solo contiene atributos de entidad y población agregada.",
+    "dificultad": "Alta: cargar un catálogo territorial más detallado y controlar el volumen de relaciones sismo-localidad.",
+    "nodos": [
+      "SISMO",
+      "LOCALIDAD"
+    ],
+    "relacion": "EXPUESTA_A",
+    "card": [
+      "(0,N)",
+      "(0,N)"
+    ],
+    "usuario_github": "Samuel-Hdzx07",
+    "issue_url": "https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/4"
+  },
+  {
+    "id": "P04",
+    "responsable": "Damas Garnica Adrian",
+    "estado": "Borrador para validación",
+    "issue": null,
+    "titulo": "Identidad territorial consistente",
+    "necesidad": "La entidad federativa se repite con nombres y tipos distintos en las dimensiones, sin un catálogo común que resuelva equivalencias.",
+    "funcion": "El analista selecciona una entidad una sola vez y obtiene sismos, población y economía asociados a la misma identidad territorial.",
+    "modelo": "Conservar ENTIDAD_FEDERATIVA como identidad común y agregar IDENTIFICADOR_TERRITORIAL (fuente, código, vigencia). Normalizar las referencias desde sismos y censos mediante un mapeo verificable de códigos.",
+    "sustento": "Hallazgo en el DDL: estado es VARCHAR, entidad de zonas es INT y entidad de economía es DOUBLE PRECISION. Desarrolla la idea de catálogo único que aparecía en la presentación anterior.",
+    "dificultad": "Media: depurar equivalencias y migrar referencias sin confundir abreviaturas con claves oficiales.",
+    "nodos": [
+      "ENTIDAD_FEDERATIVA",
+      "IDENTIFICADOR_TERRITORIAL"
+    ],
+    "relacion": "SE_IDENTIFICA_CON",
+    "card": [
+      "(1,N)",
+      "(1,1)"
+    ],
+    "usuario_github": "Actronix09"
+  },
+  {
+    "id": "P05",
+    "responsable": "Damas Garnica Adrian",
+    "estado": "Borrador para validación",
+    "issue": null,
+    "titulo": "Ediciones censales comparables",
+    "necesidad": "Las dimensiones publicadas no conservan anio_censo; una actualización puede impedir distinguir mediciones de distintas ediciones.",
+    "funcion": "El usuario elige la edición censal y compara indicadores de una entidad entre periodos sin sobrescribir observaciones anteriores.",
+    "modelo": "Agregar EDICION_CENSAL (identificador, año, fuente, fecha de referencia) y vincular CENSO_POBLACION y CENSO_ECONOMICO a su edición. La combinación entidad-edición identifica cada observación censal.",
+    "sustento": "Ausencia de anio_censo en dim_zonas y dim_economia. El EER ya reconoce el año; la propuesta añade metadatos de edición y evita perderlo en el almacén.",
+    "dificultad": "Media: definir el grano, conservar ediciones y hacer explícita la edición usada por cada consulta de impacto.",
+    "nodos": [
+      "CENSO_POBLACION",
+      "EDICION_CENSAL"
+    ],
+    "relacion": "CORRESPONDE_A",
+    "card": [
+      "(1,1)",
+      "(0,N)"
+    ],
+    "usuario_github": "Actronix09"
+  },
+  {
+    "id": "P06",
+    "responsable": "Damas Garnica Adrian",
+    "estado": "Borrador para validación",
+    "issue": null,
+    "titulo": "Trazabilidad de valores imputados",
+    "necesidad": "El nombre de la tabla de hechos indica imputación, pero su DDL no registra qué campo se estimó ni cómo se obtuvo el resultado.",
+    "funcion": "El analista distingue valores observados e imputados y consulta método, fecha y valor original antes de usar un indicador.",
+    "modelo": "Agregar REGISTRO_IMPUTACION relacionado con una ocurrencia de IMPACTA mediante agregación. Registrar campo, valor original, valor obtenido, método y versión, fecha y medida de confianza solo cuando el método la produzca.",
+    "sustento": "Hallazgo en fact_impacto_sismos_imputed: no hay columnas de procedencia de imputación. Desarrolla la propuesta de trazabilidad incluida en la presentación anterior.",
+    "dificultad": "Alta: identificar cada observación de impacto y registrar resultados reproducibles sin atribuir una confianza que no se haya calculado.",
+    "nodos": [
+      "[SISMO - IMPACTA - ENTIDAD]",
+      "REGISTRO_IMPUTACION"
+    ],
+    "relacion": "DOCUMENTA",
+    "card": [
+      "(0,N)",
+      "(1,1)"
+    ],
+    "usuario_github": "Actronix09"
+  },
+  {
+    "id": "P07",
+    "responsable": "Esparza Ramón Fernando Adán",
+    "estado": "Borrador para validación",
+    "issue": null,
+    "titulo": "Procedencia y lotes de carga",
+    "necesidad": "El modelo no permite determinar con qué archivo o actualización se incorporó un registro al sistema.",
+    "funcion": "El administrador rastrea un sismo hasta su fuente y lote, identifica la fecha de incorporación y consulta el alcance de cada carga.",
+    "modelo": "Agregar FUENTE_DATOS y LOTE_CARGA con referencia de archivo, hash, fechas y estado. Registrar la incorporación de SISMO a un lote. La procedencia no reemplaza el historial de correcciones manuales ni el registro de imputación.",
+    "sustento": "Necesidad identificada durante la revisión del DDL, que solo declara datos del dominio y carece de metadatos de carga.",
+    "dificultad": "Media: instrumentar el proceso de carga y definir cómo detectar duplicados y nuevas versiones de archivos.",
+    "nodos": [
+      "SISMO",
+      "LOTE_CARGA"
+    ],
+    "relacion": "INCORPORADO_EN",
+    "card": [
+      "(1,1)",
+      "(0,N)"
+    ],
+    "usuario_github": "adamighti2"
+  },
+  {
+    "id": "P08",
+    "responsable": "Esparza Ramón Fernando Adán",
+    "estado": "Borrador para validación",
+    "issue": null,
+    "titulo": "Historial de correcciones manuales",
+    "necesidad": "Una corrección de magnitud, coordenadas o referencia puede reemplazar información sin conservar quién la modificó y por qué.",
+    "funcion": "Una persona autorizada corrige un registro y el equipo puede consultar la secuencia de cambios y su justificación.",
+    "modelo": "Agregar REVISION_DATO con campo, valor anterior, valor nuevo, motivo, instante y editor; relacionarla con SISMO. Se documentan cambios manuales, separados de la estimación automática de datos faltantes.",
+    "sustento": "Necesidad identificada en el análisis de integridad: el esquema no contiene una bitácora de modificaciones del catálogo.",
+    "dificultad": "Media: identificar editores y registrar cambios de forma transaccional, conservando la referencia al registro afectado.",
+    "nodos": [
+      "SISMO",
+      "REVISION_DATO"
+    ],
+    "relacion": "CONSERVA_REVISION",
+    "card": [
+      "(0,N)",
+      "(1,1)"
+    ],
+    "usuario_github": "adamighti2"
+  },
+  {
+    "id": "P09",
+    "responsable": "Esparza Ramón Fernando Adán",
+    "estado": "Borrador para validación",
+    "issue": null,
+    "titulo": "Evaluación de calidad de registros",
+    "necesidad": "No se conservan resultados de validación que permitan distinguir registros completos, sospechosos y rechazados antes del análisis.",
+    "funcion": "El equipo filtra incidencias por regla o lote y conoce qué datos requieren revisión antes de generar reportes.",
+    "modelo": "Agregar REGLA_CALIDAD y EVALUACION_CALIDAD para relacionar SISMO con regla, versión, resultado, fecha y detalle. No sustituir el valor original ni confundir una incidencia con una corrección.",
+    "sustento": "Hallazgo del DDL: latitud, longitud, magnitud y demás campos no tienen CHECK ni NOT NULL; la consulta histórica muestra que es importante examinar la calidad antes de interpretar valores.",
+    "dificultad": "Media: acordar reglas, conservar resultados y distinguir avisos de errores que realmente impiden la carga.",
+    "nodos": [
+      "SISMO",
+      "EVALUACION_CALIDAD"
+    ],
+    "relacion": "ES_EVALUADO_EN",
+    "card": [
+      "(0,N)",
+      "(1,1)"
+    ],
+    "usuario_github": "adamighti2"
+  },
+  {
+    "id": "P10",
+    "responsable": "Ramos Padrón Jesus Emmanuel",
+    "estado": "Borrador para validación",
+    "issue": null,
+    "titulo": "Comparación de escenarios de impacto",
+    "necesidad": "El hecho publicado guarda indicadores de impacto sin identificar un escenario, versión de cálculo o parámetros que expliquen diferencias entre estimaciones.",
+    "funcion": "El analista compara resultados para un mismo sismo bajo distintas ediciones censales o configuraciones, manteniendo separados los resultados calculados de los datos observados.",
+    "modelo": "Agregar ESCENARIO_IMPACTO y RESULTADO_ESCENARIO relacionados con SISMO y ENTIDAD_FEDERATIVA. Guardar versión de cálculo, parámetros, edición de datos, fecha e indicadores con unidades definidas.",
+    "sustento": "Necesidad identificada a partir de los indicadores del hecho y de la ausencia de metadatos de escenario en su DDL. No se afirma que las estimaciones sean predicciones validadas.",
+    "dificultad": "Alta: definir una metodología reproducible y comparar únicamente resultados de grano y unidades compatibles.",
+    "nodos": [
+      "SISMO",
+      "RESULTADO_ESCENARIO"
+    ],
+    "relacion": "TIENE_RESULTADO",
+    "card": [
+      "(0,N)",
+      "(1,1)"
+    ],
+    "usuario_github": "Chuchin2107"
+  },
+  {
+    "id": "P11",
+    "responsable": "Ramos Padrón Jesus Emmanuel",
+    "estado": "Borrador para validación",
+    "issue": null,
+    "titulo": "Observaciones por estación",
+    "necesidad": "El catálogo describe epicentros, pero no conserva mediciones instrumentales asociadas a una estación y a un evento.",
+    "funcion": "El investigador consulta estaciones que registraron un evento y examina sus mediciones con unidades y procedencia explícitas.",
+    "modelo": "Agregar ESTACION y OBSERVACION_INSTRUMENTAL entre SISMO y ESTACION, con instante, variable, valor, unidad y fuente. Un evento y una estación pueden tener varias observaciones.",
+    "sustento": "Necesidad de análisis planteada en este borrador. Requiere conseguir y evaluar una fuente de mediciones; esos datos no están en la base actual y no se inventan para la propuesta.",
+    "dificultad": "Alta: conseguir una fuente compatible, vincular eventos y estaciones y evitar mezclar magnitudes, intensidad y mediciones físicas diferentes.",
+    "nodos": [
+      "SISMO",
+      "OBSERVACION_INSTRUMENTAL"
+    ],
+    "relacion": "TIENE_OBSERVACION",
+    "card": [
+      "(0,N)",
+      "(1,1)"
+    ],
+    "usuario_github": "Chuchin2107"
+  },
+  {
+    "id": "P12",
+    "responsable": "Ramos Padrón Jesus Emmanuel",
+    "estado": "Borrador para validación",
+    "issue": null,
+    "titulo": "Alertas por criterios configurables",
+    "necesidad": "Las consultas manuales no conservan qué eventos cumplieron una regla de interés ni a quién corresponde revisar el resultado.",
+    "funcion": "Un observador configura umbrales de magnitud, profundidad o entidad y consulta un historial de coincidencias y atención. La función sirve para seguimiento del catálogo, sin presentarse como alerta temprana.",
+    "modelo": "Agregar OBSERVADOR, REGLA_ALERTA y ALERTA_GENERADA; vincular cada alerta con SISMO, regla y fecha de evaluación, y registrar estado de atención. No se envían mensajes reales al elaborar esta propuesta.",
+    "sustento": "Necesidad de seguimiento identificada a partir de las consultas de Sismos. La evaluación posterior de un registro es distinta de un sistema de aviso previo a la llegada de ondas.",
+    "dificultad": "Media: versionar reglas, evitar duplicados y conservar el motivo por el que un evento cumplió el criterio.",
+    "nodos": [
+      "SISMO",
+      "ALERTA_GENERADA"
+    ],
+    "relacion": "ORIGINA_COINCIDENCIA",
+    "card": [
+      "(0,N)",
+      "(1,1)"
+    ],
+    "usuario_github": "Chuchin2107"
+  }
+]

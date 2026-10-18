@@ -60,7 +60,7 @@ Captura: [consulta_sql.png](capturas/consulta_sql.png)
 
 ## 4. Errores encontrados y cómo se resolvieron
 
-Durante el despliegue se presentaron problemas de configuración de contenedores y de puertos. Se resolvieron con apoyo de una herramienta de IA (declarada en el README) y ajustando los puertos publicados hasta que ambos servicios quedaron en ejecución: aplicación en el puerto 80 y base de datos en el 5433.
+El registro histórico menciona problemas de configuración y puertos, pero no conserva el mensaje exacto ni la secuencia de corrección. No es posible reconstruir ese error como si se hubiera documentado. Los puertos finales observados en las capturas fueron 80 para la aplicación y 5433 para PostgreSQL.
 
 ## 5. Observaciones
 
@@ -68,3 +68,51 @@ Durante el despliegue se presentaron problemas de configuración de contenedores
 - En las cinco filas consultadas `profundidad` vale 33. Podría ser un valor por defecto o imputado; conviene revisarlo con una consulta sobre toda la tabla.
 - Las tres opciones de la interfaz (sismos, población y economía) corresponden a las tres fuentes de datos que se modelan en el EER.
 - En el mismo Docker Desktop sigue existiendo el contenedor de la Práctica 1 (`pg-practica1`, `postgres:16`, puerto 5454). Los puertos publicados de ambos proyectos no se solapan.
+
+## 6. Revisión actual del 16 de octubre de 2026
+
+Se localizó Docker Desktop instalado por usuario y se intentó iniciar su motor. El cliente respondió, pero el servidor no estuvo disponible. El log del backend registra un fallo de acceso al socket interno sailor-ingest.sock.
+
+- [Diagnóstico real y comandos](capturas/diagnostico-2026-10-16.txt).
+- Este fallo ocurre antes de iniciar Sismos. No prueba un conflicto de sus puertos.
+- Las capturas anteriores son históricas, correspondientes al levantamiento registrado arriba.
+- Pendiente: captura auténtica de terminal con arranque exitoso y captura de la interfaz con datos cargados. La pantalla de bienvenida existente no cumple este último punto.
+- [Guion de demo y exposición](exposicion/guion.md).
+
+No se borraron contenedores ni volúmenes. Para retomar, primero hay que recuperar el arranque normal de Docker Desktop; después ejecutar Compose desde el clon separado del proyecto asignado.
+
+
+## 7. Ejecución y demo comprobadas el 18 de octubre de 2026
+
+Al retomar el trabajo, Docker ya estaba activo. Los dos contenedores de Sismos estaban en ejecución. No se necesitó borrar sockets, recrear contenedores ni modificar el volumen de PostgreSQL. No se conoce qué acción externa hizo disponible el motor después del fallo del día 16.
+
+Desde `C:\Users\sami-dev\Seismic-Data-Visualization-System` se ejecutó:
+
+```powershell
+docker compose up -d --no-build
+docker compose ps
+docker exec seismic-data-visualization-system-db-1 psql -U postgres -d datawarehouse -c "SELECT COUNT(*) AS sismos_cargados FROM dim_sismos;" -c "SELECT * FROM dim_sismos LIMIT 5;"
+```
+
+Ambos servicios respondieron en ejecución. La consulta devolvió 319,592 filas totales en `dim_sismos` y cinco filas de muestra. [Registro actual de comandos y resultados](capturas/ejecucion-2026-10-18.txt).
+
+### Aviso concreto de Compose
+
+Compose mostró `the attribute version is obsolete, it will be ignored`. Es una advertencia de compatibilidad de la propiedad `version: '3.8'`, no un fallo de arranque. Los servicios siguieron funcionando. No se cambió el Compose del proyecto asignado durante esta revisión.
+
+### Demostración con datos
+
+1. Abrir `http://localhost/vista.html` y pulsar **Sismos en México**.
+2. En la vista cargada, mantener año 2020 y magnitud mínima 5: la aplicación mostró 21 sismos y el indicador de población potencialmente afectada de 87,810,893.
+3. Cambiar la magnitud mínima a 6 y pulsar **Aplicar Filtros**: mostró 3 sismos y el indicador de población de 11,291,239.
+4. Comprobar mapa, indicadores y gráficas con datos visibles.
+
+Capturas reales del navegador:
+
+- [Filtro 2020 / magnitud mínima 6](capturas/demo-filtro-2026-10-18.png).
+- [Mapa e indicadores resultantes](capturas/demo-resultados-2026-10-18.png).
+- [Gráficas con registros cargados](capturas/demo-graficas-2026-10-18.png).
+
+Los indicadores se reportan tal como los calcula la aplicación. No equivalen a personas damnificadas observadas ni demuestran por sí solos que el cálculo evite dobles conteos.
+
+**Pendiente de evidencia:** captura auténtica de la terminal con arranque y estado de servicios. El TXT conserva la ejecución real, pero no reemplaza esa captura solicitada por la consigna.
