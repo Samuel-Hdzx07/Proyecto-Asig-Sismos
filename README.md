@@ -63,7 +63,7 @@ La versión estática conserva la estructura de navegación y las vistas princip
 
 ## Alcance de la copia
 
-El repositorio se creó para separar el proyecto asignado de otros materiales. El repositorio original `Samuel-Hdzx07/Proyecto_BD` no se modificó. Issues, pull requests y configuración del repositorio original no se transfieren a esta copia.
+El proyecto asignado se mantiene separado del proyecto musical. Los tres issues de Samuel se transfirieron a este repositorio; la equivalencia de sus números está documentada en propuestas/transferencia-issues.md. Los pull requests anteriores conservan su ubicación original.
 
 
 ## Documentación académica
@@ -79,7 +79,7 @@ Documentación del modelado, análisis y propuestas del proyecto asignado.
 - [Presentación de Sismos en PDF](exposicion/presentacion.pdf), [PowerPoint editable](exposicion/presentacion.pptx) y [guion](exposicion/guion.md).
 - [Estado de participación y revisión](revision-equipo.md).
 
-Las propuestas P01–P03 tienen antecedentes en los issues [#2](https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/2), [#3](https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/3) y [#4](https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/4) del repositorio anterior. Sus números no corresponden a issues de este repositorio. P04–P12 siguen siendo borradores para validación; no se acredita autoría por incluir un nombre.
+Las propuestas P01–P03 están registradas en los issues [#1](https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/issues/1), [#2](https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/issues/2) y [#3](https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/issues/3) de este repositorio. Se transfirieron desde música conservando autoría y contenido. P04–P12 siguen siendo borradores para validación; no se acredita autoría por incluir un nombre.
 
 ### Práctica 3
 
@@ -99,7 +99,7 @@ El cambio SQL está preparado, pero falta acreditar su ejecución sobre una copi
 
 La base original respondió con 319592 filas de dim_sismos. Para 2020, la aplicación mostró 21 eventos con magnitud mínima 5 y 3 con magnitud mínima 6. Estas pruebas corresponden al sistema original local con PostgreSQL, no a la página estática. El motor ya estaba activo al retomar el trabajo; no se atribuye una reparación que no se realizó.
 
-Pendientes: captura auténtica del arranque en terminal, validación de propuestas, issues del nuevo repositorio, revisión de un compañero y ejecución acreditada de los cambios de Práctica 3. 
+Pendientes: captura auténtica del arranque en terminal, validación de propuestas, nueve issues de los compañeros, revisión de un compañero y ejecución acreditada de los cambios de Práctica 3.
 
 ### Fork de referencia
 
@@ -118,3 +118,5 @@ Codex (OpenAI): apoyo en la elaboración del proyecto.
 ## Cobertura de las prácticas
 
 Consulta [pendientes-practicas.md](pendientes-practicas.md) para distinguir documentos disponibles y evidencia pendiente.
+
+[Registro de transferencia y equivalencia de números](propuestas/transferencia-issues.md).

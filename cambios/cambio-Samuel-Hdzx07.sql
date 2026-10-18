@@ -1,6 +1,6 @@
 -- =====================================================================
 -- Práctica 3, Ejercicio 8 - Cambio de esquema por integrante
--- Propuesta 1: Réplicas y secuencias sísmicas (issue #2)
+-- Propuesta 1: Réplicas y secuencias sísmicas (issue #1: https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/issues/1)
 -- Proyecto asignado: Sismos (data warehouse en PostgreSQL)
 --
 -- EJECUTAR SOBRE UNA COPIA de la base del proyecto asignado:

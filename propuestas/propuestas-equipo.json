@@ -3,12 +3,12 @@
     "id": "P01",
     "responsable": "Hernandez Barrios Samuel Rodrigo",
     "estado": "Registrada",
-    "issue": 2,
+    "issue": 1,
     "titulo": "Réplicas y secuencias sísmicas",
     "necesidad": "El modelo actual representa los sismos como eventos aislados y no conserva qué evento se considera réplica de otro.",
     "funcion": "Un analista selecciona un sismo principal y consulta sus réplicas, distancias e intervalos. La ventana temporal y el radio de búsqueda son configurables.",
     "modelo": "Relación recursiva ES_REPLICA_DE sobre SISMO: principal (0,N), réplica (0,1). intervalo_horas y distancia_km son derivados. El criterio de asignación debe documentarse como una regla operativa, no como una clasificación sismológica definitiva.",
-    "sustento": "Propuesta existente en el issue #2 y en el documento original. Atiende la necesidad identificada al contrastar los usos del artículo con el modelo.",
+    "sustento": "Propuesta existente en el issue #1 y en el documento original. Atiende la necesidad identificada al contrastar los usos del artículo con el modelo.",
     "dificultad": "Media: comparar eventos por tiempo, distancia y magnitud, resolver candidatos y validar el resultado.",
     "nodos": [
       "SISMO: principal",
@@ -20,18 +20,19 @@
       "(0,1)"
     ],
     "usuario_github": "Samuel-Hdzx07",
-    "issue_url": "https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/2"
+    "issue_url": "https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/issues/1",
+    "issue_origen_url": "https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/2"
   },
   {
     "id": "P02",
     "responsable": "Hernandez Barrios Samuel Rodrigo",
     "estado": "Registrada",
-    "issue": 3,
+    "issue": 2,
     "titulo": "Placas tectónicas como contexto",
     "necesidad": "El catálogo no conserva la placa asociada al epicentro ni el contexto de sus límites.",
     "funcion": "Un usuario consulta eventos por placa y compara magnitudes y profundidades por región tectónica.",
     "modelo": "PLACA_TECTONICA con identificador, nombre y geometría; SISMO (0,1) - OCURRE_EN - PLACA_TECTONICA (0,N). INTERACTUA_CON relaciona placas y guarda tipo_limite.",
-    "sustento": "Propuesta existente en el issue #3. La figura de placas del artículo y la necesidad de incorporar fuentes adicionales motivan la ampliación.",
+    "sustento": "Propuesta existente en el issue #2. La figura de placas del artículo y la necesidad de incorporar fuentes adicionales motivan la ampliación.",
     "dificultad": "Media: obtener una fuente geográfica adecuada, documentar su precisión y resolver puntos cercanos a fronteras.",
     "nodos": [
       "SISMO",
@@ -43,18 +44,19 @@
       "(0,N)"
     ],
     "usuario_github": "Samuel-Hdzx07",
-    "issue_url": "https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/3"
+    "issue_url": "https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/issues/2",
+    "issue_origen_url": "https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/3"
   },
   {
     "id": "P03",
     "responsable": "Hernandez Barrios Samuel Rodrigo",
     "estado": "Registrada",
-    "issue": 4,
+    "issue": 3,
     "titulo": "Municipios y localidades expuestas",
     "necesidad": "La información territorial disponible se agrega por entidad federativa y no permite distinguir localidades cercanas a un epicentro.",
     "funcion": "Protección civil consulta localidades dentro de un radio, con población y distancia, agrupadas por municipio.",
     "modelo": "MUNICIPIO depende de ENTIDAD_FEDERATIVA y LOCALIDAD de MUNICIPIO. EXPUESTA_A relaciona SISMO y LOCALIDAD en M:N; distancia_epicentro_km es derivada.",
-    "sustento": "Issue #4 y hallazgo comprobable en el DDL: dim_zonas solo contiene atributos de entidad y población agregada.",
+    "sustento": "Issue #3 y hallazgo comprobable en el DDL: dim_zonas solo contiene atributos de entidad y población agregada.",
     "dificultad": "Alta: cargar un catálogo territorial más detallado y controlar el volumen de relaciones sismo-localidad.",
     "nodos": [
       "SISMO",
@@ -66,7 +68,8 @@
       "(0,N)"
     ],
     "usuario_github": "Samuel-Hdzx07",
-    "issue_url": "https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/4"
+    "issue_url": "https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/issues/3",
+    "issue_origen_url": "https://github.com/Samuel-Hdzx07/BD-Proyecto-Musica/issues/4"
   },
   {
     "id": "P04",

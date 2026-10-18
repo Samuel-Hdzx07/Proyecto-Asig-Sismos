@@ -6,7 +6,7 @@ Actualización documental: 18 de octubre de 2026. Grupo 3CV4.
 
 | Integrante | Material disponible / distribución sugerida | Acreditación pendiente |
 |---|---|---|
-| Hernandez Barrios Samuel Rodrigo | Issues #2–#4: réplicas, placas y localidades | Revisión del material actualizado |
+| Hernandez Barrios Samuel Rodrigo | Issues #1–#3: réplicas, placas y localidades | Revisión del material actualizado |
 | Damas Garnica Adrian | Borradores P04–P06: identidad territorial, ediciones e imputación | Validar, corregir y aceptar las propuestas; cuenta confirmada: @Actronix09 |
 | Esparza Ramón Fernando Adán | Borradores P07–P09: procedencia, correcciones y calidad | Validar, corregir y aceptar las propuestas; cuenta confirmada: @adamighti2 |
 | Ramos Padrón Jesus Emmanuel | Borradores P10–P12: escenarios, estaciones y criterios de seguimiento | Validar, corregir y aceptar las propuestas; cuenta confirmada: @Chuchin2107 |
@@ -35,4 +35,4 @@ Las mejoras documentales están registradas en Git. No se publicó una revisión
 
 Los [nueve borradores de issues](propuestas/issues-por-publicar/README.md) están preparados por usuario. La aceptación de las invitaciones y la revisión del compañero siguen sin comprobarse en esta actualización.
 
-Los issues #2–#4 citados pertenecen al repositorio anterior, no a este.
+Los issues de las tres propuestas de Samuel ya están en este repositorio: #1, #2 y #3.

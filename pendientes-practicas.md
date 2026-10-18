@@ -17,7 +17,7 @@ Revisión documental: 18 de octubre de 2026. Se considera únicamente el bloque 
 | Correspondencia con el esquema publicado | Documento disponible | correspondencia-con-el-esquema.pdf |
 | Tres propuestas distintas por integrante | Parcial | Doce documentadas; nueve son borradores pendientes de aceptación |
 | Cambios de propuestas mostrados sobre el EER | Parcial | Hay fragmentos conceptuales; falta integrar todos los elementos de cada cambio sobre el modelo base |
-| Issues asignados a sus autores en este repositorio | Pendiente | No hay issues en este repositorio. Los tres antecedentes enlazados pertenecen al repositorio de música |
+| Issues asignados a sus autores en este repositorio | Parcial | Samuel tiene los issues #1–#3 transferidos a este repositorio. Faltan los nueve de sus compañeros después de validarlos |
 | Presentación del bloque asignado en PDF | Documento disponible | exposicion/presentacion.pdf; la exposición real y la participación de todos aún no se acreditan |
 | Revisión por compañero y flujo de rama/PR | Pendiente | No hay pull requests en este repositorio; falta revisión real de otra persona |
 
