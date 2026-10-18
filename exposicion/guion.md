@@ -20,7 +20,7 @@ La consigna completa contempla 12–15 minutos e incluye también el proyecto pr
 - La consulta `SELECT COUNT(*) FROM dim_sismos;` devuelve 319592.
 - Capturas actuales en `../capturas/`; comandos reales en `../capturas/ejecucion-2026-10-18.txt`.
 
-Falta una captura auténtica del arranque en terminal. La consulta y los indicadores no certifican por sí solos la metodología científica de impacto.
+La captura del arranque en terminal está en `../capturas/arranque-terminal-2026-10-18.png`. La consulta y los indicadores no certifican por sí solos la metodología científica de impacto.
 
 ## Pendientes de participación
 

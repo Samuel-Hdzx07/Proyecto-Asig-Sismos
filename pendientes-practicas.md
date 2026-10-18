@@ -8,7 +8,7 @@ Revisión documental: 18 de octubre de 2026. Se considera únicamente el bloque 
 |---|---|---|
 | Identificar repositorio original, fork y commit ejecutado | Documentado | README y levantamiento.md |
 | Ejecución local del sistema original | Comprobada | Contenedores, consulta y demo local del 18/10/2026 |
-| Captura del arranque en terminal | Pendiente | El registro TXT y Docker Desktop no reemplazan esa captura |
+| Captura del arranque en terminal | Cubierto | [Comandos de arranque y estado de los servicios](capturas/arranque-terminal-2026-10-18.png) |
 | Aplicación con datos cargados | Cubierto | capturas/demo-filtro-2026-10-18.png, demo-resultados-2026-10-18.png y demo-graficas-2026-10-18.png |
 | Consulta directa con resultado | Cubierto | capturas/consulta_sql.png y ejecucion-2026-10-18.txt |
 | Requisitos, pasos y errores del levantamiento | Documentado | Se distingue el fallo del día 16 y la ejecución disponible del día 18 |

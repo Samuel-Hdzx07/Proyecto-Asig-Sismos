@@ -99,7 +99,7 @@ El cambio SQL está preparado, pero falta acreditar su ejecución sobre una copi
 
 La base original respondió con 319592 filas de dim_sismos. Para 2020, la aplicación mostró 21 eventos con magnitud mínima 5 y 3 con magnitud mínima 6. Estas pruebas corresponden al sistema original local con PostgreSQL, no a la página estática. El motor ya estaba activo al retomar el trabajo; no se atribuye una reparación que no se realizó.
 
-Pendientes: captura auténtica del arranque en terminal, validación de propuestas, nueve issues de los compañeros, revisión de un compañero y ejecución acreditada de los cambios de Práctica 3.
+Pendientes: validación de propuestas, nueve issues de los compañeros, revisión de un compañero y ejecución acreditada de los cambios de Práctica 3.
 
 ### Fork de referencia
 
@@ -120,3 +120,5 @@ Codex (OpenAI): apoyo en la elaboración del proyecto.
 Consulta [pendientes-practicas.md](pendientes-practicas.md) para distinguir documentos disponibles y evidencia pendiente.
 
 [Registro de transferencia y equivalencia de números](propuestas/transferencia-issues.md).
+
+[Captura de arranque en terminal](capturas/arranque-terminal-2026-10-18.png): ambos servicios Running y puertos publicados.

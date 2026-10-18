@@ -21,7 +21,7 @@ Cuando una persona del equipo realice la revisión, debe completar su nombre, fe
 - [ ] Confirmar que las doce propuestas son distintas y que cada integrante comprende las suyas.
 - [ ] Validar nueve borradores y registrar los issues con responsables reales.
 - [x] Ejecutar la demostración con datos y conservar capturas auténticas (18/10/2026).
-- [ ] Adjuntar captura auténtica de arranque en terminal.
+- [x] Captura auténtica de arranque en terminal adjunta (18/10/2026).
 
 **Revisor:** pendiente.
 

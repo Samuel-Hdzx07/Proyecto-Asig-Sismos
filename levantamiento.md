@@ -76,7 +76,7 @@ Se localizó Docker Desktop instalado por usuario y se intentó iniciar su motor
 - [Diagnóstico real y comandos](capturas/diagnostico-2026-10-16.txt).
 - Este fallo ocurre antes de iniciar Sismos. No prueba un conflicto de sus puertos.
 - Las capturas anteriores son históricas, correspondientes al levantamiento registrado arriba.
-- Pendiente: captura auténtica de terminal con arranque exitoso y captura de la interfaz con datos cargados. La pantalla de bienvenida existente no cumple este último punto.
+- En esta revisión del día 16 faltaban las capturas de terminal y de la interfaz con datos. Ambas se incorporaron después, el día 18.
 - [Guion de demo y exposición](exposicion/guion.md).
 
 No se borraron contenedores ni volúmenes. Para retomar, primero hay que recuperar el arranque normal de Docker Desktop; después ejecutar Compose desde el clon separado del proyecto asignado.
@@ -115,4 +115,4 @@ Capturas reales del navegador:
 
 Los indicadores se reportan tal como los calcula la aplicación. No equivalen a personas damnificadas observadas ni demuestran por sí solos que el cálculo evite dobles conteos.
 
-**Pendiente de evidencia:** captura auténtica de la terminal con arranque y estado de servicios. El TXT conserva la ejecución real, pero no reemplaza esa captura solicitada por la consigna.
+**Evidencia de arranque:** [captura auténtica de PowerShell](capturas/arranque-terminal-2026-10-18.png), proporcionada por el integrante. Muestra `docker compose up -d`, ambos servicios en Running y `docker compose ps` con sus puertos. La advertencia de `version` obsoleta no impidió el funcionamiento.
