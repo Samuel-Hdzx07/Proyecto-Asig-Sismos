@@ -1,0 +1,33 @@
+BEGIN
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE INDEX
+CREATE FUNCTION
+CREATE VIEW
+CREATE FUNCTION
+CREATE VIEW
+COMMIT
+ replicas_asignadas 
+--------------------
+             159305
+(1 row)
+
+ id_replica | id_principal 
+------------+--------------
+(0 rows)
+
+ id_principal | magnitud_principal | nombre_estado | num_replicas | magnitud_max_replica | horas_hasta_ultima_replica | km_replica_mas_lejana 
+--------------+--------------------+---------------+--------------+----------------------+----------------------------+-----------------------
+       111111 |                7.2 | Oaxaca        |          926 |                    6 |                      72.00 |                 96.33
+       111940 |                  6 | Oaxaca        |          494 |                    5 |                      71.83 |                 89.42
+       113024 |                  5 | Oaxaca        |          479 |                  4.1 |                      71.90 |                 99.82
+        92303 |                5.8 | Oaxaca        |          423 |                  5.4 |                      71.60 |                 98.77
+        95584 |                6.1 | Oaxaca        |          373 |                    5 |                      71.89 |                 99.13
+       165623 |                5.3 | Oaxaca        |          371 |                  4.9 |                      71.82 |                 96.48
+        96894 |                4.8 | Oaxaca        |          303 |                  4.6 |                      71.66 |                 99.89
+       114079 |                4.7 | Oaxaca        |          282 |                  4.4 |                      71.85 |                 99.35
+        93306 |                5.3 | Oaxaca        |          259 |                  5.1 |                      71.91 |                 98.83
+       113467 |                4.3 | Oaxaca        |          244 |                  4.1 |                      60.76 |                 95.89
+(10 rows)
+

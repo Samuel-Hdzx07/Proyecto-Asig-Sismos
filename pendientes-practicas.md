@@ -1,6 +1,6 @@
 # Cobertura del proyecto asignado: Sismos
 
-Revisión documental: 18 de octubre de 2026. Se considera únicamente el bloque del proyecto asignado. La Práctica 1 no define un bloque específico de proyecto asignado.
+Revisión documental: 20 de octubre de 2026. Se considera únicamente el bloque del proyecto asignado. La Práctica 1 no define un bloque específico de proyecto asignado.
 
 ## Práctica 2
 
@@ -19,7 +19,7 @@ Revisión documental: 18 de octubre de 2026. Se considera únicamente el bloque 
 | Cambios de propuestas mostrados sobre el EER | Parcial | Hay fragmentos conceptuales; falta integrar todos los elementos de cada cambio sobre el modelo base |
 | Issues asignados a sus autores en este repositorio | Parcial | Samuel tiene los issues #1–#3 transferidos a este repositorio. Faltan los nueve de sus compañeros después de validarlos |
 | Presentación del bloque asignado en PDF | Documento disponible | exposicion/presentacion.pdf; la exposición real y la participación de todos aún no se acreditan |
-| Revisión por compañero y flujo de rama/PR | Pendiente | No hay pull requests en este repositorio; falta revisión real de otra persona |
+| Revisión por compañero y flujo de rama/PR | Pendiente | La revisión de Práctica 2 sigue pendiente de acreditarse; el PR #4 corresponde al avance de Práctica 3 |
 
 ## Práctica 3
 
@@ -28,13 +28,13 @@ Revisión documental: 18 de octubre de 2026. Se considera únicamente el bloque 
 | Esquema explicado tabla por tabla, reglas y restricciones | Documento disponible | analisis-del-esquema.pdf, contrastado con el DDL de referencia |
 | Tres desviaciones justificadas | Documento disponible | El análisis describe siete decisiones y sus ganancias/pérdidas |
 | Comparación EER–relacional del asignado | Documento disponible | comparacion-eer-relacional.pdf |
-| Comparación conjunta con el proyecto propio | Por completar al presentar ambos bloques | El ejercicio 7.3 pide usar ambos proyectos; este documento conserva únicamente Sismos |
+| Comparación conjunta con el proyecto propio | Completada | comparacion-eer-relacional.pdf contrasta Natfy y Sismos en los cinco conceptos exigidos y sus ganancias/pérdidas |
 | Un cambio de esquema por integrante | Parcial | Existe un script y memoria para Samuel; faltan los tres cambios correspondientes a los otros integrantes, después de validar sus propuestas |
-| Ejecución del cambio sobre copia de la base | Pendiente | No se ha acreditado ejecución del script de réplicas sobre una copia |
-| Consulta nueva con resultado real | Pendiente | La consulta está escrita; falta la salida obtenida después del cambio |
-| Captura, nota y comentario en issue por integrante | Parcial | Existe una memoria para Samuel; faltan las evidencias y los comentarios reales |
+| Ejecución del cambio sobre copia de la base | Ejecutado: Samuel | Copia sismos_p3_samuel_final_20261020; 159305 candidatos y cero violaciones. Transcripción en capturas/replicas-ejecucion-2026-10-20.txt; PNG pendiente |
+| Consulta nueva con resultado real | Obtenido: Samuel | CSV de diez filas, validación y comprobación de original conservado; quedan las consultas de los compañeros |
+| Captura, nota y comentario en issue por integrante | Parcial | Samuel: memoria, transcripciones y comentario en issue #1 publicados; faltan sus PNG. Compañeros: cambios y evidencias pendientes |
 | Demostración individual de hasta cinco minutos | Pendiente | Cada integrante debe demostrar su cambio y explicar su estrategia |
-| Rama practica3, PR y revisión de otro integrante | Pendiente | Solo se observa main en este repositorio |
+| Rama de trabajo, PR y revisión de otro integrante | PR en borrador | [PR #4](https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/pull/4), rama codex/practica3-replicas-comparacion; falta revisión real y fusión |
 
 ## Integrantes
 
