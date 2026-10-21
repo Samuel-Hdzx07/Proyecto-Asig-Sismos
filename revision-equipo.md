@@ -40,3 +40,5 @@ Los issues de las tres propuestas de Samuel ya están en este repositorio: #1, #
 ## Práctica 3: avance del 20/10/2026
 
 Samuel: cambio de réplicas ejecutado en copia; consulta, validación y nota actualizadas. Comparación conjunta Natfy-Sismos completada. Capturas PNG y demostración individual pendientes. Los cambios de Adrian, Fernando y Jesus no se prepararon ni se ejecutaron por instrucción del usuario. La revisión real del PR sigue pendiente; no se acredita por la revisión asistida.
+
+PR del avance: https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/pull/4 (borrador). Resultado de Samuel registrado en issue #1; revisión real pendiente.

@@ -149,3 +149,7 @@ powershell -ExecutionPolicy Bypass -File .\mostrar-replicas.ps1 -Seccion validac
 La primera sección genera otra copia con nombre único, restaura el origen y ejecuta el cambio. No modifica `datawarehouse`. Las otras secciones consultan la copia final ya disponible; se puede pasar `-Base` para usar otra copia. El cambio DDL se instala una sola vez en cada copia. Repetir la función reemplaza la asignación según los parámetros suministrados.
 
 Las transcripciones y el CSV son evidencia de ejecución real; las capturas de pantalla requeridas se añadirán cuando el usuario las adjunte. Cada persona realiza su demostración y revisión desde su propia cuenta. Los materiales de los compañeros no se modificaron.
+
+### Revisión del avance
+
+[PR #4: réplicas ejecutadas y comparación conjunta](https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/pull/4), abierto en borrador. [Resultado registrado en issue #1](https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/issues/1#issuecomment-6305335312). No está fusionado ni revisado por un compañero; faltan las capturas PNG y la demostración individual.
