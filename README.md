@@ -43,7 +43,7 @@ Las librerías de Leaflet y Chart.js, las teselas de OpenStreetMap y los límite
 
 ### Proyecto original de referencia
 
-El proyecto de referencia usa Docker Compose, PHP y PostgreSQL. En el checkout original, se inicia con `docker compose up -d` desde la carpeta que contiene `docker-compose.yml`. Su interfaz principal es `vista.html`, que abre `std.php`, `std2.php` o `std3.php` dentro de un iframe. Se accede a `http://localhost/vista.html`; la raíz `http://localhost/` no es su página de entrada. En esta tarea los contenedores existentes se inspeccionaron en modo de solo lectura y no se iniciaron, detuvieron ni modificaron.
+El proyecto de referencia usa Docker Compose, PHP y PostgreSQL. En el checkout original, se inicia con `docker compose up -d` desde la carpeta que contiene `docker-compose.yml`. Su interfaz principal es `vista.html`, que abre `std.php`, `std2.php` o `std3.php` dentro de un iframe. Se accede a `http://localhost/vista.html`; la raíz `http://localhost/` no es su página de entrada. La base original se conserva; el cambio de Práctica 3 se ejecutó exclusivamente sobre una copia restaurada de ella.
 
 ## Correspondencia del contenido estático
 
@@ -87,7 +87,7 @@ Las propuestas P01–P03 están registradas en los issues [#1](https://github.co
 - [Comparación EER–relacional del bloque asignado](comparacion-eer-relacional.pdf).
 - [Cambio de réplicas sísmicas en SQL](cambios/cambio-Samuel-Hdzx07.sql) y [explicación del cambio](cambios/cambio-Samuel-Hdzx07.pdf).
 
-El cambio SQL está preparado, pero falta acreditar su ejecución sobre una copia de la base y conservar el resultado de la consulta. No se presenta como ejecutado. La comparación de ambos proyectos que pide la consigna se completa consultando el material de Natfy en su repositorio.
+El cambio de Samuel se ejecutó el 20/10/2026 sobre `sismos_p3_samuel_final_20261020`, copia de `datawarehouse`: 159,305 candidatos, cero violaciones del criterio y consulta nueva con resultados. Es un criterio operativo, no una clasificación sismológica validada. La comparación EER-relacional ya incluye Natfy y Sismos. Las capturas PNG y la revisión real del PR siguen pendientes.
 
 ### Evidencias reales del 18/10/2026
 
@@ -99,7 +99,7 @@ El cambio SQL está preparado, pero falta acreditar su ejecución sobre una copi
 
 La base original respondió con 319592 filas de dim_sismos. Para 2020, la aplicación mostró 21 eventos con magnitud mínima 5 y 3 con magnitud mínima 6. Estas pruebas corresponden al sistema original local con PostgreSQL, no a la página estática. El motor ya estaba activo al retomar el trabajo; no se atribuye una reparación que no se realizó.
 
-Pendientes: validación de propuestas, nueve issues de los compañeros, revisión de un compañero y ejecución acreditada de los cambios de Práctica 3.
+Pendientes: validación de propuestas, nueve issues y cambios individuales de los compañeros, capturas PNG del cambio de Samuel, demostraciones y revisión de un compañero. No se implementaron propuestas ajenas en esta actualización.
 
 ### Fork de referencia
 
@@ -122,3 +122,30 @@ Consulta [pendientes-practicas.md](pendientes-practicas.md) para distinguir docu
 [Registro de transferencia y equivalencia de números](propuestas/transferencia-issues.md).
 
 [Captura de arranque en terminal](capturas/arranque-terminal-2026-10-18.png): ambos servicios Running y puertos publicados.
+
+## Resultado de Práctica 3 - Samuel (20/10/2026)
+
+- [Ejecución real del SQL](capturas/replicas-ejecucion-2026-10-20.txt).
+- [Consulta nueva con diez filas](capturas/replicas-consulta-2026-10-20.csv) y [consulta SQL](cambios/consulta-Samuel-Hdzx07.sql).
+- [Validación del criterio](capturas/replicas-validacion-2026-10-20.txt).
+- [Restricciones rechazadas](capturas/replicas-pruebas-2026-10-20.txt).
+- [Comprobación de la base original](capturas/replicas-original-conservado-2026-10-20.txt).
+- [Manifiesto de parámetros y versiones](capturas/replicas-manifiesto-2026-10-20.json).
+- [Comparación conjunta Natfy-Sismos](comparacion-eer-relacional.pdf).
+- [Nota individual y guion de demostración](cambios/cambio-Samuel-Hdzx07.pdf).
+
+La copia conserva 319,592 sismos; 123,016 no tienen fecha vinculada al hecho y no se clasifican. Se obtuvieron 159,305 vínculos directos bajo ventana de 72 horas, radio de 100 km y mayor magnitud del principal. La fila principal del resultado es 111111 (Oaxaca, magnitud 7.2), con 926 candidatos. Validar tiempo, magnitud y distancia sin redondear produce cero inconsistencias; solo se redondea la presentación.
+
+### Capturas y demostración
+
+Desde la raíz de este repositorio, con Docker iniciado:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\mostrar-replicas.ps1 -Seccion ejecucion
+powershell -ExecutionPolicy Bypass -File .\mostrar-replicas.ps1 -Seccion consulta
+powershell -ExecutionPolicy Bypass -File .\mostrar-replicas.ps1 -Seccion validacion
+```
+
+La primera sección genera otra copia con nombre único, restaura el origen y ejecuta el cambio. No modifica `datawarehouse`. Las otras secciones consultan la copia final ya disponible; se puede pasar `-Base` para usar otra copia. El cambio DDL se instala una sola vez en cada copia. Repetir la función reemplaza la asignación según los parámetros suministrados.
+
+Las transcripciones y el CSV son evidencia de ejecución real; las capturas de pantalla requeridas se añadirán cuando el usuario las adjunte. Cada persona realiza su demostración y revisión desde su propia cuenta. Los materiales de los compañeros no se modificaron.

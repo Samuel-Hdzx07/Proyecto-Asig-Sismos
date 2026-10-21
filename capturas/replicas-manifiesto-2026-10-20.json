@@ -1,0 +1,21 @@
+{
+  "fecha_local": "2026-10-20",
+  "zona_horaria": "America/Mexico_City",
+  "original": "datawarehouse",
+  "copia": "sismos_p3_samuel_final_20261020",
+  "postgresql": "17.11",
+  "sismos": 319592,
+  "hechos": 196576,
+  "candidatos_asignados": 159305,
+  "sin_fecha_vinculada": 123016,
+  "invalidos": 0,
+  "parametros": {
+    "horas": 72,
+    "radio_km": 100
+  },
+  "script_sha256": "09f2643373960123997e1a0b9b238143145f2f7c733e6441459e19eda255aefd",
+  "natfy_esquema_sha256": "0b42d7510e861070f1e8e9669081a032ac44c9aa6a6ada54d0a79e1901fed687",
+  "original_con_columna_nueva": false,
+  "clasificacion": "Criterio operativo, no validacion sismologica",
+  "capturas_png": "pendientes de adjuntar por el usuario"
+}
