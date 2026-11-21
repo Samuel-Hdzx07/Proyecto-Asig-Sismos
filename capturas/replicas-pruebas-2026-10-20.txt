@@ -1,0 +1,8 @@
+BEGIN
+DO
+psql:/tmp/sismos-cambios/pruebas-Samuel-Hdzx07.sql:6: NOTICE:  OK: autorreferencia rechazada
+psql:/tmp/sismos-cambios/pruebas-Samuel-Hdzx07.sql:10: NOTICE:  OK: principal inexistente rechazado
+DO
+DO
+ROLLBACK
+psql:/tmp/sismos-cambios/pruebas-Samuel-Hdzx07.sql:14: NOTICE:  OK: parametro invalido rechazado

@@ -1,0 +1,10 @@
+ current_database | sismos_original 
+------------------+-----------------
+ datawarehouse    |          319592
+(1 row)
+
+ columna_nueva_en_original 
+---------------------------
+                         0
+(1 row)
+

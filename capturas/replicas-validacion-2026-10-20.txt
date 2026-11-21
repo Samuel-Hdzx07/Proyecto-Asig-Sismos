@@ -1,0 +1,30 @@
+         base_de_trabajo         |                                                       version                                                        
+---------------------------------+----------------------------------------------------------------------------------------------------------------------
+ sismos_p3_samuel_final_20261020 | PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+(1 row)
+
+ sismos | candidatos_asignados 
+--------+----------------------
+ 319592 |               159305
+(1 row)
+
+ invalidos 
+-----------
+         0
+(1 row)
+
+ sin_fecha_vinculada 
+---------------------
+              123016
+(1 row)
+
+ vinculos_con_fecha_ausente 
+----------------------------
+                          0
+(1 row)
+
+  intervalo_min_horas   | intervalo_max_horas | distancia_max_km 
+------------------------+---------------------+------------------
+ 0.00027777777777777778 | 72.0000000000000000 | 99.9996846376916
+(1 row)
+

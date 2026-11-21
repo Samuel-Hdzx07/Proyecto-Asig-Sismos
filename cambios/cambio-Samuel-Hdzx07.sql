@@ -1,3 +1,4 @@
+-- Clasificacion operativa de candidatos; no es una catalogacion sismologica validada.
 -- =====================================================================
 -- Práctica 3, Ejercicio 8 - Cambio de esquema por integrante
 -- Propuesta 1: Réplicas y secuencias sísmicas (issue #1: https://github.com/Samuel-Hdzx07/Proyecto-Asig-Sismos/issues/1)
@@ -5,7 +6,7 @@
 --
 -- EJECUTAR SOBRE UNA COPIA de la base del proyecto asignado:
 --   (desde otra base, sin conexiones abiertas a la original)
---   CREATE DATABASE sismos_p3 TEMPLATE <base_original>;
+--   createdb -U postgres sismos_p3;
 --   psql -U <usuario> -d sismos_p3 -f cambio-Samuel-Hdzx07.sql
 -- =====================================================================
 
@@ -78,36 +79,53 @@ LANGUAGE plpgsql AS $$
 DECLARE
     n INT;
 BEGIN
-    UPDATE dim_sismos r
-       SET id_sismo_principal = (
-            SELECT p.id_sismo
-              FROM dim_sismos p
-              JOIN v_sismo_fecha_hora tp ON tp.id_sismo = p.id_sismo
-              JOIN v_sismo_fecha_hora tr ON tr.id_sismo = r.id_sismo
-             WHERE p.id_sismo <> r.id_sismo
-               AND p.magnitud > r.magnitud
-               AND tp.fecha_hora_utc < tr.fecha_hora_utc
-               AND tr.fecha_hora_utc - tp.fecha_hora_utc
-                   <= make_interval(secs => (p_horas * 3600)::DOUBLE PRECISION)
-               AND distancia_km(p.latitud, p.longitud, r.latitud, r.longitud)
-                   <= p_radio_km
-             ORDER BY p.magnitud DESC, tp.fecha_hora_utc, p.id_sismo
-             LIMIT 1);
-
+    IF p_horas IS NULL OR p_radio_km IS NULL OR p_horas <= 0 OR p_radio_km <= 0
+       OR p_horas::TEXT IN ('NaN','Infinity','-Infinity')
+       OR p_radio_km::TEXT IN ('NaN','Infinity','-Infinity') THEN
+        RAISE EXCEPTION 'Horas y radio deben ser positivos y finitos' USING ERRCODE='22023';
+    END IF;
+    -- Serializa asignaciones y materializa las fechas una sola vez.
+    PERFORM pg_advisory_xact_lock(806231,8);
+    CREATE TEMP TABLE catalogo_replicas ON COMMIT DROP AS
+      SELECT s.id_sismo,s.magnitud,s.latitud,s.longitud,t.fecha_hora_utc
+      FROM dim_sismos s JOIN v_sismo_fecha_hora t USING(id_sismo)
+      WHERE t.fecha_hora_utc IS NOT NULL;
+    CREATE INDEX ON catalogo_replicas(fecha_hora_utc);
+    ANALYZE catalogo_replicas;
+    CREATE TEMP TABLE asignacion_replicas ON COMMIT DROP AS
+      SELECT r.id_sismo, candidato.id_sismo AS id_principal
+      FROM catalogo_replicas r
+      LEFT JOIN LATERAL (
+        SELECT p.id_sismo
+        FROM catalogo_replicas p
+        WHERE p.fecha_hora_utc >= r.fecha_hora_utc - make_interval(secs => (p_horas*3600)::DOUBLE PRECISION)
+          AND p.fecha_hora_utc < r.fecha_hora_utc
+          AND p.magnitud > r.magnitud
+          AND distancia_km(p.latitud,p.longitud,r.latitud,r.longitud) <= p_radio_km
+        ORDER BY p.magnitud DESC,p.fecha_hora_utc,p.id_sismo
+        LIMIT 1
+      ) candidato ON TRUE;
+    CREATE UNIQUE INDEX ON asignacion_replicas(id_sismo);
+    ANALYZE asignacion_replicas;
+    UPDATE dim_sismos s SET id_sismo_principal=a.id_principal
+      FROM asignacion_replicas a WHERE a.id_sismo=s.id_sismo;
+    UPDATE dim_sismos s SET id_sismo_principal=NULL
+      WHERE NOT EXISTS(SELECT 1 FROM asignacion_replicas a WHERE a.id_sismo=s.id_sismo)
+      AND s.id_sismo_principal IS NOT NULL;
     SELECT COUNT(*) INTO n FROM dim_sismos WHERE id_sismo_principal IS NOT NULL;
     RETURN n;
 END;
 $$;
 
--- Réplicas con sus atributos derivados calculados al consultar
+-- Derivados sin redondear para validar; solo se redondean al presentar resultados.
 CREATE OR REPLACE VIEW v_replicas AS
 SELECT r.id_sismo                         AS id_replica,
        p.id_sismo                         AS id_principal,
        p.magnitud                         AS magnitud_principal,
        r.magnitud                         AS magnitud_replica,
-       ROUND((EXTRACT(EPOCH FROM (tr.fecha_hora_utc - tp.fecha_hora_utc)) / 3600)::NUMERIC, 2)
+       (EXTRACT(EPOCH FROM (tr.fecha_hora_utc - tp.fecha_hora_utc)) / 3600)::NUMERIC
                                           AS intervalo_horas,
-       ROUND(distancia_km(p.latitud, p.longitud, r.latitud, r.longitud)::NUMERIC, 2)
+       distancia_km(p.latitud, p.longitud, r.latitud, r.longitud)::NUMERIC
                                           AS distancia_km
   FROM dim_sismos r
   JOIN dim_sismos p            ON p.id_sismo = r.id_sismo_principal
@@ -144,10 +162,10 @@ SELECT v.id_principal,
        s.nombre_estado,
        COUNT(*)                 AS num_replicas,
        MAX(v.magnitud_replica)  AS magnitud_max_replica,
-       MAX(v.intervalo_horas)   AS horas_hasta_ultima_replica,
-       MAX(v.distancia_km)      AS km_replica_mas_lejana
+       ROUND(MAX(v.intervalo_horas),2) AS horas_hasta_ultima_replica,
+       ROUND(MAX(v.distancia_km),2) AS km_replica_mas_lejana
   FROM v_replicas v
   JOIN dim_sismos s ON s.id_sismo = v.id_principal
  GROUP BY v.id_principal, v.magnitud_principal, s.nombre_estado
- ORDER BY num_replicas DESC, v.magnitud_principal DESC
+ ORDER BY num_replicas DESC, v.magnitud_principal DESC, v.id_principal
  LIMIT 10;
